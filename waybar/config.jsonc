@@ -1,0 +1,109 @@
+{
+  "layer": "top",
+  "mode": "dock",
+  "position": "top",
+  "exclusive": false,
+  "passthrough": false,
+  "modules-left": ["hyprland/workspaces"],
+  "modules-center": ["custom/media", "clock"],
+  "modules-right": [
+    "battery",
+    "network",
+    "bluetooth",
+    "hyprland/language",
+    "pulseaudio",
+    "custom/power"
+  ],
+  //"custom/arch": {
+  //  "format": "  ",
+  //   "on-click": "wofi application_launcher"
+  // },
+  "hyprland/workspaces": {
+    "disable-scroll": true,
+    "all-outputs": true,
+    "on-click": "activate",
+    "persistent_workspaces": {
+      "1": [],
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": [],
+      "6": [],
+      "7": [],
+      "8": [],
+      "9": [],
+      "10": []
+    }
+  },
+  "battery": {
+    "states": {
+      "good": 80,
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "<span font='JetBrainsMono Nerd Font'>{icon}</span> {capacity}% ",
+    "format-charging": "<span font='JetBrainsMono Nerd Font'></span {capacity}% ",
+    "format-plugged": "<span font='Font JetBrainsMono Nerd Font'></span {capacity}% ",
+    "format-icons": ["", "", "", "", ""],
+    "on-click": "tlpui"
+  },
+
+  "pulseaudio": {
+    "format": "<span color='#98c379'></span> {volume}%",
+    "format-muted": "<span color='#abb2bf'>ﱝ</span>",
+    "on-click": "pavucontrol",
+    "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+    "format-icons": {
+      "headphone": " ",
+      "hands-free": " ",
+      "headset": " ",
+      "phone": " ",
+      "portable": " ",
+      "car": " ",
+      "default": " "
+    }
+  },
+  "network": {
+    "interface": "wlp1s0",
+    "format": "{ifname}",
+    "format-wifi": "<span color='#61afef'> </span>{essid}({signalStrength}%)",
+    "format-ethernet": "{ipaddr}/{cidr} ",
+    "format-disconnected": "<span color='#e06c75'>󰖪 </span>No Network",
+    "on-click": "nm-connection-editor"
+  },
+  "custom/media": {
+    "format": "{icon} {}",
+    "return-type": "json",
+    "max-length": {
+      "yandex-music": "",
+      "default": "🎜"
+    },
+    "escape": true,
+    "exec": "python ~/.config/waybar/mediaplayer.py",
+    "on-click": "playerctl play-pause",
+    "on-click-right": "playerctl next",
+    "on-click-middle": "playerctl previous",
+    "interval": 1
+  },
+  "clock": {
+    "interval": 1,
+    "format": "{:%H:%M:%OS}",
+    "tooltip": false
+  },
+  "hyprland/language": {
+    "format": " {}",
+    "on-click": "grp:caps_toggle"
+  },
+  "custom/power": {
+    "format": "<span color='#e06c75'>⏻ </span>",
+    "tooltip": false,
+    "on-click": "wlogout"
+  },
+  "bluetooth": {
+    "on-click": "blueman-manager",
+    "format-on": " <span color='#c678dd'>󰂯</span> ",
+    "format-off": " <span color='#c678dd'>󰂲</span> ",
+    "format-disabled": "", // an empty format will hide the module
+    "format-connected": " <span color='#c678dd'>󰂱 {num_connections}</span> "
+  }
+}
