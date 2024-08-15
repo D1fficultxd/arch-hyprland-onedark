@@ -14,8 +14,8 @@ OFFICIAL=$(checkupdates | wc -l)
 
 # Case/switch for each service updates
 case $1 in
-    aur) echo " $AUR";;
-    official) echo " $OFFICIAL";;
+    aur echo " $AUR";;
+    official echo " $OFFICIAL";;
 esac
 
 # If the parameter is "update", update all services
