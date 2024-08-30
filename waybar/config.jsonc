@@ -4,8 +4,8 @@
   "position": "top",
   "exclusive": false,
   "passthrough": false,
-  "modules-left": ["hyprland/workspaces"],
-  "modules-center": ["custom/media", "clock"],
+  "modules-left": ["hyprland/workspaces", "custom/media"],
+  "modules-center": ["clock"],
   "modules-right": [
     "battery",
     "network",
@@ -73,17 +73,16 @@
   },
   "custom/media": {
     "return-type": "json",
-    "max-length": 15,
+    "max-length": 20,
     "escape": true,
     "exec": "$HOME/.config/waybar/scripts/mediaplayer.py 2> /dev/null", // Script in resources folder
     "on-click": "playerctl play-pause",
     "on-click-right": "playerctl next",
     "on-click-middle": "playerctl previous"
-    // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
   },
   "clock": {
     "interval": 1,
-    "format": "{:%H:%M:%OS}",
+    "format": " {:%H:%M:%OS}",
     "tooltip": false
   },
   "hyprland/language": {
