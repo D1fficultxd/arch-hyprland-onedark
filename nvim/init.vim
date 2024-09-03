@@ -38,9 +38,8 @@ Plug 'morhetz/gruvbox'  " colorscheme gruvbox
 Plug 'mhartington/oceanic-next'  " colorscheme OceanicNext
 Plug 'kaicataldo/material.vim', { 'branch': 'main' }
 Plug 'ayu-theme/ayu-vim'
-Plug 'xiyaowong/nvim-transparent'
 Plug 'navarasu/onedark.nvim'
-
+Plug 'xiyaowong/nvim-transparent'
 
 Plug 'Pocco81/auto-save.nvim'
 Plug 'justinmk/vim-sneak'
@@ -54,6 +53,10 @@ Plug 'maxmellon/vim-jsx-pretty'
 Plug 'jose-elias-alvarez/null-ls.nvim'
 Plug 'jose-elias-alvarez/nvim-lsp-ts-utils'
 Plug 'nvim-lua/plenary.nvim'
+
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'npm install --frozen-lockfile --production',
+  \ 'for': ['javascript', 'typescript', 'typescriptreact', 'javascriptreact', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'] }
 
 Plug 'bmatcuk/stylelint-lsp'
 
@@ -88,11 +91,6 @@ let g:prettier#quickfix_enabled = 0
 let g:sneak#label = 1
 
 colorscheme onedark
-" Vim
-let g:onedark_config = {
-    \ 'style': 'darker',
-\}
-colorscheme onedark
 "colorscheme OceanicNext
 "let g:material_terminal_italics = 1
 " variants: default, palenight, ocean, lighter, darker, default-community,
@@ -100,6 +98,9 @@ colorscheme onedark
 "           darker-community
 "let g:material_theme_style = 'darker'
 "colorscheme material
+if (has('termguicolors'))
+  set termguicolors
+endif
 
 " variants: mirage, dark, dark
 "let ayucolor="mirage"
@@ -393,4 +394,3 @@ hi DiagnosticError guifg=White
 hi DiagnosticWarn  guifg=White
 hi DiagnosticInfo  guifg=White
 hi DiagnosticHint  guifg=White
-
